@@ -10,10 +10,12 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 @bot.event
 async def on_ready():
     if __name__ == "__main__":
+        # Loop through all the files in the cogs folder
         for filename in os.listdir("./cogs"):
             if filename.endswith(".py"):
-                cog_name = f"cogs.{filename[:-3]}"
+                cog_name = f"cogs.{filename[:-3]}"  # Remove '.py' from the filename and add 'cogs.'
 
+                # Error checking on cog loading
                 try:
                     await bot.load_extension(cog_name)
                 except TypeError:
